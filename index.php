@@ -8,7 +8,7 @@ get_header();
   <!-- HOME CONTAINER-->
   <div class="home__container container grid">
     <div class="home__img-bg">
-      <img class="home__img" src="<?= bloginfo('template_url'); ?>/assets/images/5c1f0ebbc3e1719c2499.png" alt="🏡">
+      <img class="home__img" src="<?php the_field('home_img'); ?>" alt="🏡">
     </div>
 
     <!-- HOME SOCIAL-->
@@ -21,16 +21,16 @@ get_header();
     <!-- HOME DATA-->
     <div class="home__data">
       <h1 class="home__title">
-        NEW WATCH
-        <br>
-        COLLECTIONS B720
+        <?php the_field('home_title'); ?>
       </h1>
 
       <!-- HOME DESCRIPTION-->
       <p class="home__description">
-        Latest arrival of the new imported watches of the B720 series, with a modern and resistant design.
+        <?php the_field('home_descr'); ?>
       </p>
-      <span class="home__price">$1245</span>
+      <span class="home__price">
+        $<?php the_field('home_price'); ?>
+      </span>
 
       <!-- HOME BTNS-->
       <div class="home__btns">
