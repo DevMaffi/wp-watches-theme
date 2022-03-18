@@ -14,3 +14,5 @@ function watches_scripts()
   wp_enqueue_script('watches-vendors', get_template_directory_uri() . "/$root_dir/2a44116dbc8a78e55fb3.js", array(), null, true);
   wp_enqueue_script('watches-index', get_template_directory_uri() . "/$root_dir/35bd31f56b94b95cd970.js", array(), null, true);
 }
+
+add_theme_support('post-thumbnails');

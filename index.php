@@ -47,45 +47,40 @@ get_header();
 
   <!-- FEATURED CONTAINER-->
   <div class="featured__container grid">
+    <?php
+    $posts = get_posts(array(
+      'numberpoints' => -1,
+      'category_name' => 'featured',
+      'order_by' => 'date',
+      'order' => 'ASC',
+      'post_type' => 'post',
+      'suppress_filters' => true,
+    ));
 
-    <!-- CARD-->
-    <article class="featured__card">
-      <span class="featured__tag">Sale</span>
-      <img class="featured__img" src="<?= bloginfo('template_url'); ?>/assets/images/aad77c8a060cba25e9bd.png" alt="featured" />
+    foreach ($posts as $post) {
+      setup_postdata($post);
+    ?>
+      <!-- CARD-->
+      <article class="featured__card">
+        <span class="featured__tag">Sale</span>
+        <img class="featured__img" src="<?php the_post_thumbnail_url(); ?>" alt="featured" />
 
-      <!-- CARD DATA-->
-      <div class="featured__data">
-        <h3 class="featured__title">Jazzmaster</h3>
-        <span class="featured__price">$1050</span>
-      </div>
-      <button class="button featured__button">ADD TO CART</button>
-    </article>
+        <!-- CARD DATA-->
+        <div class="featured__data">
+          <h3 class="featured__title">
+            <?php the_title(); ?>
+          </h3>
+          <span class="featured__price">
+            $<?php the_field('card_price'); ?>
+          </span>
+        </div>
+        <button class="button featured__button">ADD TO CART</button>
+      </article>
+    <?php
+    }
 
-    <!-- CARD-->
-    <article class="featured__card ">
-      <span class="featured__tag">Sale</span>
-      <img class="featured__img" src="<?= bloginfo('template_url'); ?>/assets/images/0d097ad1cb6bb3be9759.png" alt="featured" />
-
-      <!-- CARD DATA-->
-      <div class="featured__data">
-        <h3 class="featured__title">Ingersoll</h3>
-        <span class="featured__price">$250</span>
-      </div>
-      <button class="button featured__button">ADD TO CART</button>
-    </article>
-
-    <!-- CARD-->
-    <article class="featured__card">
-      <span class="featured__tag">Sale</span>
-      <img class="featured__img" src="<?= bloginfo('template_url'); ?>/assets/images/ed09ad664b90db3addcf.png" alt="featured" />
-
-      <!-- CARD DATA-->
-      <div class="featured__data">
-        <h3 class="featured__title">Rose fold</h3>
-        <span class="featured__price">$890</span>
-      </div>
-      <button class="button featured__button">ADD TO CART</button>
-    </article>
+    wp_reset_postdata();
+    ?>
   </div>
 </section>
 
