@@ -116,66 +116,39 @@ get_header();
 
   <!-- PRODUCTS CONTAINER-->
   <div class="products__container grid">
+    <?php
+    $posts = get_posts(array(
+      'numberpoints' => -1,
+      'category_name' => 'products',
+      'order_by' => 'date',
+      'order' => 'ASC',
+      'post_type' => 'post',
+      'suppress_filters' => true,
+    ));
 
-    <!-- CARD-->
-    <article class="products__card">
-      <img class="products__img" src="<?= bloginfo('template_url'); ?>/assets/images/c1e18d20f2be6d0702f6.png" alt="product" />
+    foreach ($posts as $post) {
+      setup_postdata($post);
+    ?>
+      <!-- CARD-->
+      <article class="products__card">
+        <img class="products__img" src="<?php the_post_thumbnail_url(); ?>" alt="product" />
 
-      <!-- CARD DATA-->
-      <h3 class="products__title">Spirit rose</h3>
-      <span class="products__price">$1500</span>
-      <button class="products__button">
-        <i class="bx bx-shopping-bag"></i>
-      </button>
-    </article>
+        <!-- CARD DATA-->
+        <h3 class="products__title">
+          <?php the_title(); ?>
+        </h3>
+        <span class="products__price">
+          $<?php the_field('card_price'); ?>
+        </span>
+        <button class="products__button">
+          <i class="bx bx-shopping-bag"></i>
+        </button>
+      </article>
+    <?php
+    }
 
-    <!-- CARD-->
-    <article class="products__card">
-      <img class="products__img" src="<?= bloginfo('template_url'); ?>/assets/images/7219a6f80972671a8470.png" alt="product" />
-
-      <!-- CARD DATA-->
-      <h3 class="products__title">Khaki pilot</h3>
-      <span class="products__price">$1350</span>
-      <button class="products__button">
-        <i class="bx bx-shopping-bag"></i>
-      </button>
-    </article>
-
-    <!-- CARD-->
-    <article class="products__card">
-      <img class="products__img" src="<?= bloginfo('template_url'); ?>/assets/images/1bd2b44edbba842f503e.png" alt="product" />
-
-      <!-- CARD DATA-->
-      <h3 class="products__title">Jubilee black</h3>
-      <span class="products__price">$870</span>
-      <button class="products__button">
-        <i class="bx bx-shopping-bag"></i>
-      </button>
-    </article>
-
-    <!-- CARD-->
-    <article class="products__card">
-      <img class="products__img" src="<?= bloginfo('template_url'); ?>/assets/images/c8980cc814a719dd0a9c.png" alt="product" />
-
-      <!-- CARD DATA-->
-      <h3 class="products__title">Fosil me3</h3>
-      <span class="products__price">$650</span>
-      <button class="products__button">
-        <i class="bx bx-shopping-bag"></i>
-      </button>
-    </article>
-
-    <!-- CARD-->
-    <article class="products__card">
-      <img class="products__img" src="<?= bloginfo('template_url'); ?>/assets/images/85b65a3629914b32bd0f.png" alt="product" />
-
-      <!-- CARD DATA-->
-      <h3 class="products__title">Duchen</h3>
-      <span class="products__price">$950</span>
-      <button class="products__button">
-        <i class="bx bx-shopping-bag"></i>
-      </button>
-    </article>
+    wp_reset_postdata();
+    ?>
   </div>
 </section>
 
