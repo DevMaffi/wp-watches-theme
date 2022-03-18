@@ -163,66 +163,49 @@ get_header();
 
       <!-- SWIPER WRAPPER-->
       <div class="swiper-wrapper">
+        <?php
+        $posts = get_posts(array(
+          'numberpoints' => -1,
+          'category_name' => 'comments',
+          'order_by' => 'date',
+          'order' => 'ASC',
+          'post_type' => 'post',
+          'suppress_filters' => true,
+        ));
 
-        <!-- TESTIMONIAL CARD-->
-        <div class="testimonial__card swiper-slide">
-          <div class="testimonial__quote">
-            <i class="bx bxs-quote-alt-left"></i>
-          </div>
-          <p class="testimonial__description">
-            They are the best watches that one acquires, also they are always with the latest news and trends, with a very comfortable price and especially with the attention you receive, they are always attentive to your questions.
-          </p>
-          <h3 class="testimonial__date">Match 27. 2021</h3>
+        foreach ($posts as $post) {
+          setup_postdata($post);
+        ?>
+          <!-- TESTIMONIAL CARD-->
+          <div class="testimonial__card swiper-slide">
+            <div class="testimonial__quote">
+              <i class="bx bxs-quote-alt-left"></i>
+            </div>
+            <p class="testimonial__description">
+              <?php the_field('comment_descr'); ?>
+            </p>
+            <h3 class="testimonial__date">
+              <?php the_field('comment_date'); ?>
+            </h3>
 
-          <!-- TESTIMONIAL PERFIL-->
-          <div class="testimonial__perfil">
-            <img class="testimonial__perfil-img" src="<?= bloginfo('template_url'); ?>/assets/images/7f99a0c2d43a30bbd4fb.jpg" alt="testimonial" />
-            <div class="testimonial__perfil-data">
-              <span class="testimonial__perfil-name">Lee Doe</span>
-              <span class="testimonial__perfil-detail">Director of a company</span>
+            <!-- TESTIMONIAL PERFIL-->
+            <div class="testimonial__perfil">
+              <img class="testimonial__perfil-img" src="<?php the_post_thumbnail_url(); ?>" />
+              <div class="testimonial__perfil-data">
+                <span class="testimonial__perfil-name">
+                  <?php the_field('comment_author'); ?>
+                </span>
+                <span class="testimonial__perfil-detail">
+                  <?php the_field('comment_author_position'); ?>
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        <?php
+        }
 
-        <!-- TESTIMONIAL CARD-->
-        <div class="testimonial__card swiper-slide">
-          <div class="testimonial__quote">
-            <i class="bx bxs-quote-alt-left"></i>
-          </div>
-          <p class="testimonial__description">
-            They are the best watches that one acquires, also they are always with the latest news and trends, with a very comfortable price and especially with the attention you receive, they are always attentive to your questions.
-          </p>
-          <h3 class="testimonial__date">Match 27. 2021</h3>
-
-          <!-- TESTIMONIAL PERFIL-->
-          <div class="testimonial__perfil">
-            <img class="testimonial__perfil-img" src="<?= bloginfo('template_url'); ?>/assets/images/2153518d8433fb410765.jpg" alt="testimonial" />
-            <div class="testimonial__perfil-data">
-              <span class="testimonial__perfil-name">Samantha May</span>
-              <span class="testimonial__perfil-detail">Director of a company</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- TESTIMONIAL CARD-->
-        <div class="testimonial__card swiper-slide">
-          <div class="testimonial__quote">
-            <i class="bx bxs-quote-alt-left"></i>
-          </div>
-          <p class="testimonial__description">
-            They are the best watches that one acquires, also they are always with the latest news and trends, with a very comfortable price and especially with the attention you receive, they are always attentive to your questions.
-          </p>
-          <h3 class="testimonial__date">Match 27. 2021</h3>
-
-          <!-- TESTIMONIAL PERFIL-->
-          <div class="testimonial__perfil">
-            <img class="testimonial__perfil-img" src="<?= bloginfo('template_url'); ?>/assets/images/9d6716b38faee0416628.jpg" alt="testimonial" />
-            <div class="testimonial__perfil-data">
-              <span class="testimonial__perfil-name">Raul Zaman</span>
-              <span class="testimonial__perfil-detail">Director of a company</span>
-            </div>
-          </div>
-        </div>
+        wp_reset_postdata();
+        ?>
       </div>
 
       <!-- SWIPER BTNS-->
@@ -237,7 +220,7 @@ get_header();
     <!-- TESTIMONIAL IMAGES-->
     <div class="testimonial__images">
       <div class="testimonial__square">
-        <img class="testimonial__img" src="<?= bloginfo('template_url'); ?>/assets/images/20c1a8612685a03bce80.png" alt="testimonial">
+        <img class="testimonial__img" src="<?php the_field('testimonial_img'); ?>" alt="testimonial">
       </div>
     </div>
   </div>
