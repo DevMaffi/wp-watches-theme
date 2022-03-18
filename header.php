@@ -8,7 +8,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" href="<?= bloginfo('template_url'); ?>/assets/images/1970841f12c64467dd99.png" type="image/x-icon" />
-  <title>Responsive Watches Website</title>
+  <title>
+    <?php
+    bloginfo('name');
+    echo ' | ';
+    bloginfo('description');
+    ?>
+  </title>
   <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
 
   <?php
