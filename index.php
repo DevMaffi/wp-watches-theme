@@ -94,19 +94,17 @@ get_header();
     <div class="story__data">
       <h2 class="section__title story__section-title">Our story</h2>
       <h1 class="story__title">
-        Inspirational Watch of
-        <br>
-        this year
+        <?php the_field('story_title'); ?>
       </h1>
       <p class="story__description">
-        The latest and modern watches of this year, is available in various presentations in this store, discover them now.
+        <?php the_field('story_descr'); ?>
       </p>
       <a class="button button--small" href="#">Discover</a>
     </div>
 
     <!-- STORY IMAGES-->
     <div class="story__images">
-      <img class="story__img" src="<?= bloginfo('template_url'); ?>/assets/images/066c5116289add4feca0.png" alt="story">
+      <img class="story__img" src="<?php the_field('story_img'); ?>" alt="story">
       <div class="story__square"></div>
     </div>
   </div>
