@@ -280,12 +280,10 @@ get_header();
   <div class="newsletter__bg grid">
     <div>
       <h2 class="newsletter__title">
-        Subscribe Our
-        <br>
-        Newsletter
+        <?php the_field('newsletter_title'); ?>
       </h2>
       <p class="newsletter__description">
-        Don`t miss out on your discounts. Subscribe to our email newsletter to get the best offers, discounts, coupons, gifts and much more.
+        <?php the_field('newsletter_descr'); ?>
       </p>
     </div>
 
