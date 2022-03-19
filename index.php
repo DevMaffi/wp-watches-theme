@@ -49,7 +49,7 @@ get_header();
   <div class="featured__container grid">
     <?php
     $posts = get_posts(array(
-      'numberpoints' => -1,
+      'numberposts' => 3,
       'category_name' => 'featured',
       'order_by' => 'date',
       'order' => 'ASC',
@@ -118,7 +118,7 @@ get_header();
   <div class="products__container grid">
     <?php
     $posts = get_posts(array(
-      'numberpoints' => -1,
+      'numberposts' => -1,
       'category_name' => 'products',
       'order_by' => 'date',
       'order' => 'ASC',
@@ -165,7 +165,7 @@ get_header();
       <div class="swiper-wrapper">
         <?php
         $posts = get_posts(array(
-          'numberpoints' => -1,
+          'numberposts' => -1,
           'category_name' => 'comments',
           'order_by' => 'date',
           'order' => 'ASC',
@@ -236,7 +236,7 @@ get_header();
       <div class="swiper-wrapper">
         <?php
         $posts = get_posts(array(
-          'numberpoints' => -1,
+          'numberposts' => -1,
           'category_name' => 'new_arrivals',
           'order_by' => 'date',
           'order' => 'ASC',
