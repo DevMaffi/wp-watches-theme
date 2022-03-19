@@ -234,58 +234,40 @@ get_header();
   <div class="new__container">
     <div class="swiper new-swiper">
       <div class="swiper-wrapper">
+        <?php
+        $posts = get_posts(array(
+          'numberpoints' => -1,
+          'category_name' => 'new_arrivals',
+          'order_by' => 'date',
+          'order' => 'ASC',
+          'post_type' => 'post',
+          'suppress_filters' => true,
+        ));
 
-        <!-- CARD-->
-        <article class="new__card swiper-slide">
-          <span class="new__tag">New</span>
-          <img class="new__img" src="<?= bloginfo('template_url'); ?>/assets/images/090b231e81a146f8b6a1.png" alt="new" />
+        foreach ($posts as $post) {
+          setup_postdata($post);
+        ?>
+          <!-- CARD-->
+          <article class="new__card swiper-slide">
+            <span class="new__tag">New</span>
+            <img class="new__img" src="<?php the_post_thumbnail_url(); ?>" alt="new" />
 
-          <!-- CARD DATA-->
-          <div class="new__data">
-            <h3 class="new__title">Logines rose</h3>
-            <span class="new__price">$980</span>
-          </div>
-          <button class="button new__button">ADD TO CART</button>
-        </article>
+            <!-- CARD DATA-->
+            <div class="new__data">
+              <h3 class="new__title">
+                <?php the_title(); ?>
+              </h3>
+              <span class="new__price">
+                $<?php the_field('card_price'); ?>
+              </span>
+            </div>
+            <button class="button new__button">ADD TO CART</button>
+          </article>
+        <?php
+        }
 
-        <!-- CARD-->
-        <article class="new__card swiper-slide">
-          <span class="new__tag">New</span>
-          <img class="new__img" src="<?= bloginfo('template_url'); ?>/assets/images/edf0d7dfa5bd45d171e5.png" alt="new" />
-
-          <!-- CARD DATA-->
-          <div class="new__data">
-            <h3 class="new__title">Jazzmaster</h3>
-            <span class="new__price">$1150</span>
-          </div>
-          <button class="button new__button">ADD TO CART</button>
-        </article>
-
-        <!-- CARD-->
-        <article class="new__card swiper-slide">
-          <span class="new__tag">New</span>
-          <img class="new__img" src="<?= bloginfo('template_url'); ?>/assets/images/b6a16635a5f1970210a0.png" alt="new" />
-
-          <!-- CARD DATA-->
-          <div class="new__data">
-            <h3 class="new__title">Dreyfuss gold</h3>
-            <span class="new__price">$750</span>
-          </div>
-          <button class="button new__button">ADD TO CART</button>
-        </article>
-
-        <!-- CARD-->
-        <article class="new__card swiper-slide">
-          <span class="new__tag">New</span>
-          <img class="new__img" src="<?= bloginfo('template_url'); ?>/assets/images/40fcfa3d9f91cb20c86d.png" alt="new" />
-
-          <!-- CARD DATA-->
-          <div class="new__data">
-            <h3 class="new__title">Portuguese rose</h3>
-            <span class="new__price">$1590</span>
-          </div>
-          <button class="button new__button">ADD TO CART</button>
-        </article>
+        wp_reset_postdata();
+        ?>
       </div>
     </div>
   </div>
