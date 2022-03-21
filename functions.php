@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * functions and definitions
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ */
+
 add_action('wp_enqueue_scripts', 'watches_styles');
 add_action('wp_enqueue_scripts', 'watches_scripts');
 
