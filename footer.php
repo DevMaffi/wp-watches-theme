@@ -32,42 +32,34 @@
     <div class="footer__content">
       <h3 class="footer__title">About Us</h3>
 
-      <!-- FOOTER LINKS-->
-      <ul class="footer__links">
-        <li>
-          <a class="footer__link" href="#">Support Center</a>
-        </li>
-        <li>
-          <a class="footer__link" href="#">Customer Center</a>
-        </li>
-        <li>
-          <a class="footer__link" href="#">About Us</a>
-        </li>
-        <li>
-          <a class="footer__link" href="#">Copy Right</a>
-        </li>
-      </ul>
+      <?php
+      wp_nav_menu([
+        'menu' => 'About menu',
+        'container' => false,
+        'menu_class' => 'footer__links',
+        'echo' => true,
+        'fallback_cb' => 'wp_page_menu',
+        'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+        'depth' => 1,
+      ]);
+      ?>
     </div>
 
     <!-- FOOTER CONTENT-->
     <div class="footer__content">
       <h3 class="footer__title">Product</h3>
 
-      <!-- FOOTER LINKS-->
-      <ul class="footer__links">
-        <li>
-          <a class="footer__link" href="#">Road bikes</a>
-        </li>
-        <li>
-          <a class="footer__link" href="#">Mountain bikes</a>
-        </li>
-        <li>
-          <a class="footer__link" href="#">Electric</a>
-        </li>
-        <li>
-          <a class="footer__link" href="#">Accessories</a>
-        </li>
-      </ul>
+      <?php
+      wp_nav_menu([
+        'menu' => 'Product menu',
+        'container' => false,
+        'menu_class' => 'footer__links',
+        'echo' => true,
+        'fallback_cb' => 'wp_page_menu',
+        'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+        'depth' => 1,
+      ]);
+      ?>
     </div>
 
     <!-- FOOTER CONTENT-->
