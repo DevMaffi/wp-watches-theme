@@ -98,7 +98,9 @@
       </ul>
     </div>
   </div>
-  <span class="footer__copy">© 2022 Rolex. All rights reserved</span>
+  <span class="footer__copy">
+    <?php the_field('copyright_text'); ?>
+  </span>
 </footer>
 </main>
 
