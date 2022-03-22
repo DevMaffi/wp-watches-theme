@@ -22,9 +22,15 @@
 
       <!-- FOOTER LIST-->
       <ul class="footer__list">
-        <li>1234 - Peru</li>
-        <li>La Libertad 43210</li>
-        <li>123-456-789</li>
+        <li>
+          <?php the_field('contact_1'); ?>
+        </li>
+        <li>
+          <?php the_field('contact_2'); ?>
+        </li>
+        <li>
+          <?php the_field('contact_3'); ?>
+        </li>
       </ul>
     </div>
 
