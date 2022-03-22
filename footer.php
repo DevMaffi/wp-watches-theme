@@ -76,15 +76,27 @@
 
       <!-- FOOTER SOCIAL-->
       <ul class="footer__social">
-        <a class="footer__social-link" href="https://www.facebook.com/" target="_blank">
-          <i class="bx bxl-facebook"></i>
-        </a>
-        <a class="footer__social-link" href="https://twitter.com/" target="_blank">
-          <i class="bx bxl-twitter"></i>
-        </a>
-        <a class="footer__social-link" href="https://www.instagram.com/" target="_blank">
-          <i class="bx bxl-instagram"></i>
-        </a>
+        <?php
+        $posts = get_posts(array(
+          'numberposts' => 3,
+          'category_name' => 'social_links',
+          'order_by' => 'date',
+          'order' => 'ASC',
+          'post_type' => 'post',
+          'suppress_filters' => true,
+        ));
+
+        foreach ($posts as $post) {
+          setup_postdata($post);
+        ?>
+          <a class="footer__social-link" href="<?php the_field('social_url'); ?>" target="_blank">
+            <?php the_field('social_icon'); ?>
+          </a>
+        <?php
+        }
+
+        wp_reset_postdata();
+        ?>
       </ul>
     </div>
   </div>

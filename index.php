@@ -13,9 +13,27 @@ get_header();
 
     <!-- HOME SOCIAL-->
     <div class="home__social">
-      <a class="home__social-link" href="https://www.facebook.com/" target="_blank">Facebook</a>
-      <a class="home__social-link" href="https://twitter.com/" target="_blank">Twitter</a>
-      <a class="home__social-link" href="https://www.instagram.com/" target="_blank">Instagram</a>
+      <?php
+      $posts = get_posts(array(
+        'numberposts' => 3,
+        'category_name' => 'social_links',
+        'order_by' => 'date',
+        'order' => 'ASC',
+        'post_type' => 'post',
+        'suppress_filters' => true,
+      ));
+
+      foreach ($posts as $post) {
+        setup_postdata($post);
+      ?>
+        <a class="home__social-link" href="<?php the_field('social_url'); ?>" target="_blank">
+          <?php the_title(); ?>
+        </a>
+      <?php
+      }
+
+      wp_reset_postdata();
+      ?>
     </div>
 
     <!-- HOME DATA-->
